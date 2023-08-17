@@ -1,0 +1,22 @@
+import pygame
+
+class Laser(pygame.sprite.Sprite):
+    def __init__(self, pos, screen_height, speed=8):
+        super().__init__()
+        self.image = pygame.Surface((4, 20))
+        self.image.fill('white')
+        self.rect = self.image.get_rect(center = pos)
+        self.speed = speed
+        self.height_y_constrained = screen_height
+
+    def destory(self):
+        if self.rect.y <= -50 or self.rect.y >= self.height_y_constrained + 50:
+            self.kill()
+
+
+    def move_laser(self):
+        self.rect.y -= self.speed
+
+    def update(self):
+        self.move_laser()
+        self.destory()
