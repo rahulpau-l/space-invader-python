@@ -33,15 +33,13 @@ class Player(pygame.sprite.Sprite):
                 self.ready = True
     
     def shoot_laser(self):
-        self.lasers.add(Laser(self.rect.center, self.rect.bottom))
+        self.lasers.add(Laser(self.rect.center, self.rect.bottom, -6))
         
     def constraint(self):
         if self.rect.left <= 0:
             self.rect.left = 0
-        
         if self.rect.right >= 600:
             self.rect.right = 600
-        
 
     def update(self):
         self.get_input()
